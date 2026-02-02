@@ -17,10 +17,11 @@ export const apiConnector = async (method, endpoint, data= null , headers = {}, 
             headers: headers? headers : {},
             params: params? params : null,
         });
-        return response.data;
+        // console.log( "resoponse......................", response)
+        return response.data
     } catch (error) {
-        console.error("API Error:", error);
-        throw error;
+        console.error("API Error:.....................", error.response.data);
+        return error.response.data
     }       
 };
 

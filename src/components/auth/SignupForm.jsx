@@ -3,10 +3,10 @@ import { toast } from "react-hot-toast"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { setSignupData } from "../../slices/authSlice"
-import { ACCOUNT_TYPE } from "../../utils/constants"
-import Tab from "../Tab.jsx"
-import { signUp } from "../../services/oprations/authAPI.jsx"
+import { setSignupData } from "../../slices/authSlice.jsx"
+import { ACCOUNT_TYPE } from "../../utils/constants.jsx"
+import Tab from "../common/Tab.jsx"
+import { sendOtp } from "../../services/oprations/authAPI.jsx"
 
 function SignupForm() {
   const navigate = useNavigate()
@@ -52,15 +52,7 @@ function SignupForm() {
     // Setting signup data to state
     dispatch(setSignupData(signupData))
     dispatch(
-      signUp(
-        accountType,        
-        firstName,
-        lastName,
-        email,  
-        password,
-        confirmPassword,
-        navigate
-      )
+      sendOtp({email, navigate})
     )   
     
 

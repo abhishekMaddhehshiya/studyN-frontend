@@ -1,16 +1,16 @@
 import React from 'react'
 import { GoArrowRight } from "react-icons/go"
 import { Link } from 'react-router-dom'
-import HighlightText from '../components/HighlightText'
-import CTAButton from '../components/CTAButton'
+import HighlightText from '../components/common/HighlightText'
+import CTAButton from '../components/common/CTAButton'
 import Banner from '../assets/banner.mp4'
-import CodeBlocks from '../components/CodeBlocks'
-import TimelineSection from '../components/TimelineSection'
-import LearningLanguageSection from '../components/LearningLanguageSection'
-import InstructorSection from '../components/InstructorSection'
-import ReviewSection from '../components/ReviewSlider'
-import ExploreMore from '../components/ExploreMore'
-import Footer from '../components/Footer'
+import CodeBlocks from '../components/HomePage/CodeBlocks'
+import TimelineSection from '../components/HomePage/TimelineSection'
+import LearningLanguageSection from '../components/HomePage/LearningLanguageSection'
+import InstructorSection from '../components/HomePage/InstructorSection'
+import ReviewSection from '../components/common/ReviewSlider'
+import ExploreMore from '../components/HomePage/ExploreMore'
+import Footer from '../components/common/Footer'
 
 
 const Home = () => {

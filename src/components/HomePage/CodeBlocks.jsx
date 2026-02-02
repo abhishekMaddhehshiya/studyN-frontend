@@ -1,5 +1,5 @@
 import React from 'react'
-import CTAButton from './CTAButton'
+import CTAButton from '../common/CTAButton'
 import { GoArrowRight } from 'react-icons/go'
 import { TypeAnimation } from 'react-type-animation'
 

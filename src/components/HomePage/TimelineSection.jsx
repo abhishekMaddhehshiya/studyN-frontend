@@ -1,9 +1,9 @@
 import React from 'react'
-import tlLogo1 from "../assets/tlLogo1.png"
-import tlLogo2 from "../assets/tlLogo2.png"
-import tlLogo3 from "../assets/tlLogo3.png"
-import tlLogo4 from "../assets/tlLogo4.png"
-import girlImage from "../assets/girlImage.png"
+import tlLogo1 from "../../assets/tlLogo1.png"
+import tlLogo2 from "../../assets/tlLogo2.png"
+import tlLogo3 from "../../assets/tlLogo3.png"
+import tlLogo4 from "../../assets/tlLogo4.png"
+import girlImage from "../../assets/girlImage.png"
 
 const timeline = [
   {

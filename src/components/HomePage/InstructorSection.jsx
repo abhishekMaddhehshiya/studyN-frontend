@@ -1,7 +1,7 @@
 import React from 'react'
-import instructorImage from "../assets/instructorImage.png"
-import HighlightText from './HighlightText'
-import CTAButton from './CTAButton'
+import instructorImage from "../../assets/instructorImage.png"
+import HighlightText from '../common/HighlightText'
+import CTAButton from '../common/CTAButton'
 import { GoArrowRight } from 'react-icons/go'
 
 const InstructorSection = () => {

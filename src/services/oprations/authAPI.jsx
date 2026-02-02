@@ -4,11 +4,46 @@ import { setLoading, setToken } from "../../slices/authSlice"
 import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
-import { ENDPOINTS } from "../apiEndpoints"
+import { endpoints } from "../apiEndpoints"
 
-const SIGNUP_API = ENDPOINTS.SIGNUP
-const LOGIN_API = ENDPOINTS.LOGIN
+const {
+  SENDOTP_API,
+  SIGNUP_API,
+  LOGIN_API,
+  RESETPASSTOKEN_API,
+  RESETPASSWORD_API,
+} = endpoints
 
+
+export function sendOtp({ email,navigate }) {
+  return async (dispatch)=>{
+      const toastId = toast.loading("Loading...")
+    dispatch(setLoading(true))
+    try {
+      const res = await apiConnector("POST", SENDOTP_API, {
+        email
+      } )
+
+      console.log("sendotp api response", res)
+      console.log(res.message)
+
+      if(!res.success){
+        throw new Error(res.message)
+
+      }
+      toast.success("OTP sent successfully")
+      navigate("/verify-email")
+      
+    } catch (error) {
+      console.log("Send otp error.............", error);
+      toast.error(error.message);
+      
+    }
+     dispatch(setLoading(false))
+    toast.dismiss(toastId)
+  }
+
+}
 
 export function signUp(
   accountType,
@@ -17,6 +52,7 @@ export function signUp(
   email,
   password,
   confirmPassword,
+  otp,
   navigate
 ) {
   return async (dispatch) => {
@@ -30,6 +66,7 @@ export function signUp(
         email,
         password,
         confirmPassword,
+        otp
       })
 
       console.log("SIGNUP API RESPONSE............", response)
@@ -41,8 +78,7 @@ export function signUp(
       navigate("/login")
     } catch (error) {
       console.log("SIGNUP API ERROR............", error)
-      toast.error("Signup Failed")
-      navigate("/signup")
+      toast.error(error.message)
     }
     dispatch(setLoading(false))
     toast.dismiss(toastId)
@@ -62,9 +98,9 @@ export function login(email, password, navigate) {
       console.log("LOGIN API RESPONSE............", response)
 
       if (!response?.success) {
-        throw new Error(response.data.message)
+        throw new Error(response.message)
       }
-      
+
 
       toast.success("Login Successful")
       dispatch(setToken(response.token))
@@ -72,13 +108,13 @@ export function login(email, password, navigate) {
         ? response.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.user.firstName} ${response.user.lastName}`
       dispatch(setUser({ ...response.user, image: userImage }))
-      
+
       localStorage.setItem("token", JSON.stringify(response.token))
       localStorage.setItem("user", JSON.stringify(response.user))
       navigate("/dashboard/my-profile")
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
-      toast.error("Login Failed")
+      toast.error(error.message)
     }
     dispatch(setLoading(false))
     toast.dismiss(toastId)

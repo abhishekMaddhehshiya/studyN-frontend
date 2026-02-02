@@ -11,7 +11,7 @@ export default {
       white: "#fff",
       black: "#000",
       transparent: "#ffffff00",
-      richblack: {
+     richblack: {
         5: "#F1F2FF",
         25: "#DBDDEA",
         50: "#C5C7D4",

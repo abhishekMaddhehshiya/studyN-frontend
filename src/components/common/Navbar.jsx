@@ -1,13 +1,13 @@
 import React, { use, useEffect } from 'react'
-import { NavbarLinks } from '../assets/data/navbar-links'
+import { NavbarLinks } from '../../assets/data/navbar-links'
 import { Link, matchPath, useLocation } from 'react-router-dom'
-import logo from "../assets/Logos.png"
+import logo from "../../assets/Logos.png"
 import { BiChevronDown } from "react-icons/bi";
 import { useSelector } from 'react-redux'
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import ProfileDropdown from './auth/ProfileDropdown'
-import { apiConnector } from '../services/apiConnector';
-import { ENDPOINTS } from '../services/apiEndpoints';
+import ProfileDropdown from '../auth/ProfileDropdown'
+import { apiConnector } from '../../services/apiConnector';
+import { courseEndpoints } from '../../services/apiEndpoints';
 
 
 const Navbar = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await apiConnector("GET", ENDPOINTS.SHOW_ALL_CATEGORIES);
+        const res = await apiConnector("GET", courseEndpoints.COURSE_CATEGORIES_API);
         setSublinks(res?.allCategories || []);
         console.log(res?.allCategories);
       } catch (error) {
@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* navLinks */}
 
-        <div className='flex items-center gap-8 text-sm font-medium'>
+        <div className='hidden md:flex items-center gap-8 text-sm font-medium'>
           {
             NavbarLinks.map((link, index) => (
               link.title === "Catalog" ? (
@@ -85,7 +85,7 @@ const Navbar = () => {
 
           {
             token ? (
-              <ProfileDropdown user={user} />
+              <ProfileDropdown user={user} sublinks = {sublinks}/>
             ) : (
               <>
                 <Link to={"/login"} >

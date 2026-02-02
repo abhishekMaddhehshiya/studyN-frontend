@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { HomePageExplore } from '../assets/data/homepage-explore.js';
-import HighlightText from './HighlightText';
+import { HomePageExplore } from '../../assets/data/homepage-explore.js';
+import HighlightText from '../common/HighlightText';
 import {TbBinaryTree2Filled} from "react-icons/tb";
 import { IoIosMan } from "react-icons/io";
 

@@ -4,12 +4,12 @@ import GetAvgRating from '../../utils/avgRating';
 import { Link } from 'react-router-dom';
 
 const Course_Card = ({course, Height}) => {
-
+    // console.log(course)
 
     const [avgReviewCount, setAvgReviewCount] = useState(0);
 
     useEffect(()=> {
-        const count = GetAvgRating(course.ratingAndReviews);
+        const count = GetAvgRating(course.ratingsAndReviews);
         setAvgReviewCount(count);
     },[course])
 

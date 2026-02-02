@@ -366,8 +366,8 @@ export const createRating = async (data, token) => {
       Authorization: `Bearer ${token}`,
     })
     console.log("CREATE RATING API RESPONSE............", response)
-    if (!response?.data?.success) {
-      throw new Error("Could Not Create Rating")
+    if (!response?.success) {
+      throw new Error(response.message)
     }
     toast.success("Rating Created")
     success = true
